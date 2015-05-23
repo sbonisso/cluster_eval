@@ -6,8 +6,8 @@ require 'cluster_eval/version'
 Gem::Specification.new do |spec|
   spec.name          = "cluster_eval"
   spec.version       = ClusterEval::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["stefano.rb@gmail.com"]
+  spec.authors       = ["sbonisso"]
+  spec.email         = ["sbonisso@ucsd.edu"]
 
   # if spec.respond_to?(:metadata)
   #   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
