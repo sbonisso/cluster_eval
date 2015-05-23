@@ -5,8 +5,8 @@ require 'cluster_eval'
 
 class CLUSTER_EVAL_BIN < Thor
   
-  method_option :cluster_file_a, :alias => "-a", :desc => "cluster file A"
-  method_option :cluster_file_b, :alias => "-b", :desc => "cluster file B"
+  method_option :cluster_file_a, :aliases => "-a", :desc => "cluster file A"
+  method_option :cluster_file_b, :aliases => "-b", :desc => "cluster file B"
   method_option :type, :alias => "-y", :desc => "type of index to compute"
   desc 'eval [options]', 'evaluate clusterings'
   def eval()
