@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <cmath>
 #include "prettyprint.hpp"
 
 #ifndef CPPPROG
@@ -36,11 +37,12 @@ protected:
 public:
     ConfusionMatrix();
     ConfusionMatrix(Rice::Hash c1_hsh, Rice::Hash c2_hsh);
-    virtual ~ConfusionMatrix() {}
+    virtual ~ConfusionMatrix();
     
     // for computing various indices
     double get_rand_index();
     double get_jaccard_index();
+    double get_fowlkes_mallows_index();
 };
 
 #endif

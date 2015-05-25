@@ -16,5 +16,6 @@ void Init_ClusterEval()
 	//.define_constructor(Constructor<ConfusionMatrix,std::string,std::string>())
 	.define_constructor(Constructor<ConfusionMatrix,Hash,Hash>())
 	.define_method("get_rand_index", &ConfusionMatrix::get_rand_index)
-	.define_method("get_jaccard_index", &ConfusionMatrix::get_jaccard_index);
+	.define_method("get_jaccard_index", &ConfusionMatrix::get_jaccard_index)
+	.define_method("get_fowlkes_mallows_index", &ConfusionMatrix::get_fowlkes_mallows_index);
 }
