@@ -17,5 +17,6 @@ void Init_ClusterEval()
 	.define_constructor(Constructor<ConfusionMatrix,Hash,Hash>())
 	.define_method("get_rand_index", &ConfusionMatrix::get_rand_index)
 	.define_method("get_jaccard_index", &ConfusionMatrix::get_jaccard_index)
-	.define_method("get_fm_index", &ConfusionMatrix::get_fm_index);
+	.define_method("get_fm_index", &ConfusionMatrix::get_fm_index)
+	.define_method("print_matrix", &ConfusionMatrix::print_matrix);
 }

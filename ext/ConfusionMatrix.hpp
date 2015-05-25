@@ -39,6 +39,8 @@ public:
     ConfusionMatrix(Rice::Hash c1_hsh, Rice::Hash c2_hsh);
     virtual ~ConfusionMatrix();
     
+    void print_matrix();
+    
     // for computing various indices
     double get_rand_index();
     double get_jaccard_index();

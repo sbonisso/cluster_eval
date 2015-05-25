@@ -68,6 +68,12 @@ void ConfusionMatrix::populate_vect(Rice::Hash &hsh,
     }
 }
 /**
+ *
+ */
+void ConfusionMatrix::print_matrix() {
+    std::cout<<a_<<"\t"<<b_<<"\t"<<c_<<"\t"<<d_<<std::endl;
+}
+/**
  * compute confusion matrix entries a, b, c, and d
  */
 void ConfusionMatrix::compute_confusion_matrix() {
@@ -79,7 +85,6 @@ void ConfusionMatrix::compute_confusion_matrix() {
     c_ = v1.second;
     d_ = v2.first;
     b_ = ((n*(n-1))/2) - (a_+c_+d_);
-    std::cout<<a_<<"\t"<<b_<<"\t"<<c_<<"\t"<<d_<<std::endl;
 }
 /**
  * return Rand index: (a+b)/(a+b+c+d)
