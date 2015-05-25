@@ -42,7 +42,7 @@ public:
     // for computing various indices
     double get_rand_index();
     double get_jaccard_index();
-    double get_fowlkes_mallows_index();
+    double get_fm_index();
 };
 
 #endif

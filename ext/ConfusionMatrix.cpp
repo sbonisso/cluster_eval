@@ -93,9 +93,9 @@ double ConfusionMatrix::get_jaccard_index() {
     return (double)(a_)/(double)(a_+c_+d_);
 }
 /**
- *
+ * returns Fowlkes-Mallows (FM) index: a/sqrt((a+c)*(a+d))
  */
-double ConfusionMatrix::get_fowlkes_mallows_index() {
+double ConfusionMatrix::get_fm_index() {
     double d1 = (double)(a_+c_);
     double d2 = (double)(a_+d_);
     return (double)a_/sqrt(d1*d2);
