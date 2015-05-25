@@ -10,13 +10,28 @@ class CLUSTER_EVAL_BIN < Thor
   method_option :type, :aliases => "-y", :desc => "type of index to compute"
   desc 'eval [options]', 'evaluate clusterings'
   def eval()
-    clust_a = options["cluster_file_a"]
-    clust_b = options["cluster_file_b"]
+    clust_a_f = options["cluster_file_a"]
+    clust_b_f = options["cluster_file_b"]
     index_type = options["type"]
     
-    cm = ClusterEval::confusion_matrix(clust_a, clust_b)
-    puts cm
+    #cm = ClusterEval::confusion_matrix(clust_a, clust_b)
+    #puts cm
     #ClusterEval::rand_index(cm)
+
+    clust_a_h = {}
+    IO.foreach(clust_a_f) do |line|
+      ary = line.chomp.split("\t")
+      clust_a_h[ary[0].to_i] = ary[1].to_i
+    end
+    clust_b_h = {}
+    IO.foreach(clust_b_f) do |line|
+      ary = line.chomp.split("\t")
+      clust_b_h[ary[0].to_i] = ary[1].to_i
+    end
+    
+    cm = ClusterEval::ConfusionMatrix.new(clust_a_h, clust_b_h)
+    puts ['%0.3f' % cm.get_rand_index, 
+          '%0.3f' % cm.get_jaccard_index].join("\t")
   end
   
 end
