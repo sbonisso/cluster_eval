@@ -83,7 +83,7 @@ void ConfusionMatrix::compute_confusion_matrix() {
     int n = (int)clust_1_.size();
     a_ = v1.first;
     c_ = v1.second;
-    d_ = v2.first;
+    d_ = v2.second;
     b_ = ((n*(n-1))/2) - (a_+c_+d_);
 }
 /**
