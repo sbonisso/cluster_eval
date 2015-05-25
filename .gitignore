@@ -1,4 +1,8 @@
 *~
+*.o
+*.so
+Makefile
+ext/test.rb
 /.bundle/
 /.yardoc
 /Gemfile.lock
