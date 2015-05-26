@@ -41,6 +41,7 @@ public:
     
     void print_matrix();
     
+    Rice::Array get_confusion_matrix();
     // for computing various indices
     double get_rand_index();
     double get_jaccard_index();

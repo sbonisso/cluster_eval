@@ -74,6 +74,17 @@ void ConfusionMatrix::print_matrix() {
     std::cout<<a_<<"\t"<<b_<<"\t"<<c_<<"\t"<<d_<<std::endl;
 }
 /**
+ * return ruby array with contents of confusion matrix: [a, b, c, d]
+ */
+Rice::Array ConfusionMatrix::get_confusion_matrix() {
+    Rice::Array ary;
+    ary.push(a_);
+    ary.push(b_);
+    ary.push(c_);
+    ary.push(d_);
+    return ary;
+}
+/**
  * compute confusion matrix entries a, b, c, and d
  */
 void ConfusionMatrix::compute_confusion_matrix() {
