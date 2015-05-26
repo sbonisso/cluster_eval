@@ -30,10 +30,10 @@ protected:
     std::vector<std::vector<int> > clust_map_2_;
     // fill in clust_vect from hash (ruby hash)
     void populate_vect(Rice::Hash &hsh, std::vector<int> &clust_v);
-    
+    //
     std::pair<int,int> int_and_diff(std::vector<int> clust_v, 
 				    std::vector<std::vector<int>> clust_map);
-
+    
 public:
     ConfusionMatrix();
     ConfusionMatrix(Rice::Hash c1_hsh, Rice::Hash c2_hsh);
@@ -46,6 +46,10 @@ public:
     double get_rand_index();
     double get_jaccard_index();
     double get_fm_index();
+
+    // compute using naive N^2 for testing purposes
+    Rice::Array get_confusion_matrix_naive();
+    
 };
 
 #endif

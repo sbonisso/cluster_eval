@@ -145,3 +145,30 @@ std::pair<int,int> ConfusionMatrix::int_and_diff(std::vector<int> clust_v,
     //
     return std::pair<int,int>(intsect, diff);
 }
+/**
+ * compute confusion matrix in naive N**2 time, used for comparing
+ * (i.e., sanity check) testing results 
+ */
+Rice::Array ConfusionMatrix::get_confusion_matrix_naive() {    
+    int len = (int)clust_1_.size();
+    int a = 0; int b = 0; int c = 0; int d = 0;
+    for(int i = 0; i < len; i++) {
+	for(int j = 0; j < len; j++) {
+	    if(i >= j) { continue; }
+	    bool t1 = (clust_1_[i] == clust_1_[j]);
+	    bool t2 = (clust_2_[i] == clust_2_[j]);
+	    if(t1 && t2) { a += 1; }
+	    else if(!t1 && !t2) { b += 1; }
+	    else if(!t1 && t2) { c += 1; }
+	    else if(t1 && !t2) { d += 1; }
+	    else {}
+	}
+    }
+    //
+    Rice::Array ary;
+    ary.push(a);
+    ary.push(b);
+    ary.push(c);
+    ary.push(d);
+    return ary;
+}

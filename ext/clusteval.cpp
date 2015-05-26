@@ -19,5 +19,6 @@ void Init_ClusterEval()
 	.define_method("get_jaccard_index", &ConfusionMatrix::get_jaccard_index)
 	.define_method("get_fm_index", &ConfusionMatrix::get_fm_index)
 	.define_method("print_matrix", &ConfusionMatrix::print_matrix)
-	.define_method("get_confusion_matrix", &ConfusionMatrix::get_confusion_matrix);
+	.define_method("get_confusion_matrix", &ConfusionMatrix::get_confusion_matrix)
+	.define_method("get_confusion_matrix_naive", &ConfusionMatrix::get_confusion_matrix_naive);
 }
