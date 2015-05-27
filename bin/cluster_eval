@@ -14,10 +14,6 @@ class CLUSTER_EVAL_BIN < Thor
     clust_b_f = options["cluster_file_b"]
     index_type = options["type"]
     
-    #cm = ClusterEval::confusion_matrix(clust_a, clust_b)
-    #puts cm
-    #ClusterEval::rand_index(cm)
-
     clust_a_h = {}
     IO.foreach(clust_a_f) do |line|
       ary = line.chomp.split("\t")
@@ -30,10 +26,24 @@ class CLUSTER_EVAL_BIN < Thor
     end
     
     cm = ClusterEval::ConfusionMatrix.new(clust_a_h, clust_b_h)
-    cm.print_matrix
-    puts ['%0.3f' % cm.get_rand_index, 
-          '%0.3f' % cm.get_jaccard_index,
-          '%0.3f' % cm.get_fm_index].join("\t")
+    # cm.print_matrix
+    # puts ['%0.3f' % cm.get_rand_index, 
+    #       '%0.3f' % cm.get_jaccard_index,
+    #       '%0.3f' % cm.get_fm_index].join("\t")
+    if index_type == "rand" then
+      puts '%0.3f' % cm.get_rand_index
+    elsif index_type == "jaccard" then
+      puts '%0.3f' % cm.get_jaccard_index
+    elsif index_type == "fm" then
+      puts '%0.3f' % cm.get_fm_index
+    elsif index_type == "all" then
+      puts ['rand', 'jaccard', 'fm'].join("\t")
+      puts ['%0.3f' % cm.get_rand_index, 
+            '%0.3f' % cm.get_jaccard_index,
+            '%0.3f' % cm.get_fm_index].join("\t")
+    else
+      raise 'invalid index type'
+    end
   end
   
 end
