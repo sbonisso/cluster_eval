@@ -26,10 +26,7 @@ class CLUSTER_EVAL_BIN < Thor
     end
     
     cm = ClusterEval::ConfusionMatrix.new(clust_a_h, clust_b_h)
-    # cm.print_matrix
-    # puts ['%0.3f' % cm.get_rand_index, 
-    #       '%0.3f' % cm.get_jaccard_index,
-    #       '%0.3f' % cm.get_fm_index].join("\t")
+    
     if index_type == "rand" then
       puts '%0.3f' % cm.get_rand_index
     elsif index_type == "jaccard" then
