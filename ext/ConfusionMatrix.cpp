@@ -101,21 +101,18 @@ void ConfusionMatrix::compute_confusion_matrix() {
     a_ = v1.first;
     c_ = v1.second;
     b_ = v2.second;
-    //d_ = ((n*(n-1))/2) - (a_+c_+d_);
     d_ = ((n*(n-1))/2) - (a_+c_+b_);
 }
 /**
  * return Rand index: (a+b)/(a+b+c+d)
  */
 double ConfusionMatrix::get_rand_index() {
-    //return (double)(a_+b_)/(double)(a_+b_+c_+d_);
     return (double)(a_+d_)/(double)(a_+b_+c_+d_);
 }
 /**
- * return Jaccard index: a/(a+c+d)
+ * return Jaccard index: a/(a+c+b)
  */
 double ConfusionMatrix::get_jaccard_index() {
-    //return (double)(a_)/(double)(a_+c_+d_);
     return (double)(a_)/(double)(a_+c_+b_);
 }
 /**
@@ -123,7 +120,6 @@ double ConfusionMatrix::get_jaccard_index() {
  */
 double ConfusionMatrix::get_fm_index() {
     double d1 = (double)(a_+c_);
-    //double d2 = (double)(a_+d_);
     double d2 = (double)(a_+b_);
     return (double)a_/sqrt(d1*d2);
 }
@@ -134,10 +130,8 @@ double ConfusionMatrix::get_adj_rand_index() {
     double total = a_+b_+c_+d_;
     double n1 = ((b_+a_)*(c_+a_) + (b_+d_)*(c_+d_));
     
-    std::cout<<a_<<" + "<<d_<<"\n";
     double num = (total*((double)(a_+d_))) - n1;
     double denom = (total*total - n1);
-    std::cout<<n1<<"\t"<<total<<"\t"<<num<<"\t"<<denom<<"\n";
     return (num/denom);
 }
 /**
