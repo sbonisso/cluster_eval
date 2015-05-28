@@ -2,14 +2,12 @@ require_relative 'test_helper'
 require 'cluster_eval'
 
 
-class TestConfusionMatrix < MiniTest::Test
-  
+class TestConfusionMatrixSmall < MiniTest::Test
+  #
   def setup
     @h1= {0 => 0, 1 => 0, 2 => 1, 3 => 1, 4 => 1, 5 => 2, 6 => 2, 7 => 2}
-    @h2= {0 => 0, 1 => 1, 2 => 1, 3 => 1, 4 => 1, 5 => 1, 6 => 2, 7 => 2}
-    
-  end
-  
+    @h2= {0 => 0, 1 => 1, 2 => 1, 3 => 1, 4 => 1, 5 => 1, 6 => 2, 7 => 2}    
+  end  
   #
   # test tiny example
   #
