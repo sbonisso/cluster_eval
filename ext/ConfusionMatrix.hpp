@@ -46,6 +46,7 @@ public:
     double get_rand_index();
     double get_jaccard_index();
     double get_fm_index();
+    double get_adj_rand_index();
 
     // compute using naive N^2 for testing purposes
     Rice::Array get_confusion_matrix_naive();

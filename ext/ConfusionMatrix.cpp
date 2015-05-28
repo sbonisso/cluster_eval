@@ -86,6 +86,12 @@ Rice::Array ConfusionMatrix::get_confusion_matrix() {
 }
 /**
  * compute confusion matrix entries a, b, c, and d
+ * for the matrix:
+ *    ---------
+ *    | a | b |
+ *    ---------
+ *    | c | d |
+ *    -------
  */
 void ConfusionMatrix::compute_confusion_matrix() {
     std::pair<int,int> v1 = int_and_diff(clust_1_, clust_map_2_);
@@ -94,28 +100,45 @@ void ConfusionMatrix::compute_confusion_matrix() {
     int n = (int)clust_1_.size();
     a_ = v1.first;
     c_ = v1.second;
-    d_ = v2.second;
-    b_ = ((n*(n-1))/2) - (a_+c_+d_);
+    b_ = v2.second;
+    //d_ = ((n*(n-1))/2) - (a_+c_+d_);
+    d_ = ((n*(n-1))/2) - (a_+c_+b_);
 }
 /**
  * return Rand index: (a+b)/(a+b+c+d)
  */
 double ConfusionMatrix::get_rand_index() {
-    return (double)(a_+b_)/(double)(a_+b_+c_+d_);
+    //return (double)(a_+b_)/(double)(a_+b_+c_+d_);
+    return (double)(a_+d_)/(double)(a_+b_+c_+d_);
 }
 /**
  * return Jaccard index: a/(a+c+d)
  */
 double ConfusionMatrix::get_jaccard_index() {
-    return (double)(a_)/(double)(a_+c_+d_);
+    //return (double)(a_)/(double)(a_+c_+d_);
+    return (double)(a_)/(double)(a_+c_+b_);
 }
 /**
- * returns Fowlkes-Mallows (FM) index: a/sqrt((a+c)*(a+d))
+ * returns Fowlkes-Mallows (FM) index: a/sqrt((a+c)*(a+b))
  */
 double ConfusionMatrix::get_fm_index() {
     double d1 = (double)(a_+c_);
-    double d2 = (double)(a_+d_);
+    //double d2 = (double)(a_+d_);
+    double d2 = (double)(a_+b_);
     return (double)a_/sqrt(d1*d2);
+}
+/**
+ * returns the adjusted Rand index using the confusion matrix
+ */
+double ConfusionMatrix::get_adj_rand_index() {
+    double total = a_+b_+c_+d_;
+    double n1 = ((b_+a_)*(c_+a_) + (b_+d_)*(c_+d_));
+    
+    std::cout<<a_<<" + "<<d_<<"\n";
+    double num = (total*((double)(a_+d_))) - n1;
+    double denom = (total*total - n1);
+    std::cout<<n1<<"\t"<<total<<"\t"<<num<<"\t"<<denom<<"\n";
+    return (num/denom);
 }
 /**
  * get counts of: <intersection, difference> between the vector of 
@@ -158,9 +181,9 @@ Rice::Array ConfusionMatrix::get_confusion_matrix_naive() {
 	    bool t1 = (clust_1_[i] == clust_1_[j]);
 	    bool t2 = (clust_2_[i] == clust_2_[j]);
 	    if(t1 && t2) { a += 1; }
-	    else if(!t1 && !t2) { b += 1; }
+	    else if(!t1 && !t2) { d += 1; }
 	    else if(!t1 && t2) { c += 1; }
-	    else if(t1 && !t2) { d += 1; }
+	    else if(t1 && !t2) { b += 1; }
 	    else {}
 	}
     }
