@@ -2,6 +2,8 @@
 
 Evaluates clusterings of a dataset using a variety of scores.
 
+[![Build Status](https://travis-ci.org/sbonisso/cluster_eval.svg?branch=master)](https://travis-ci.org/sbonisso/cluster_eval)
+
 ## Installation
 
 Add this line to your application's Gemfile:
