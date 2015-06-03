@@ -4,3 +4,11 @@ rvm:
 - 2.0.0
 - 2.1.1
 - ruby-head
+
+before_install:
+- gem install thor
+- gem install rice
+- gem install bundler
+- gem install rake
+- gem install minitest
+- gem install minitest-reporters
