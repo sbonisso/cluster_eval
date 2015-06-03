@@ -18,6 +18,8 @@ Or install it yourself as:
 
     $ gem install cluster_eval
 
+Note, you will need a version of g++ installed that is compatible with [C++11](https://gcc.gnu.org/projects/cxx0x.html).
+
 ## Usage
 
 This can be used as a library, or through the installed command line program `cluster_eval`.
