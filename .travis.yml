@@ -12,3 +12,6 @@ before_install:
 - gem install rake
 - gem install minitest
 - gem install minitest-reporters
+
+install:
+- cd ext/ && ruby extconf.rb && make
