@@ -37,8 +37,8 @@ Options:
   -y, [--type=TYPE]                      # type of index to compute
 ```
 
-The `type` argument specifies the index to compute either the [Rand index](http://en.wikipedia.org/wiki/Rand_index), [Jaccard index](http://en.wikipedia.org/wiki/Jaccard_index), [Fowlkes-Mallows index](http://en.wikipedia.org/wiki/Fowlkes%E2%80%93Mallows_index), or all. 
-It can take on values of: [rand/jaccard/fm/all]
+The `type` argument specifies the index to compute either the [Rand index](http://en.wikipedia.org/wiki/Rand_index), [Jaccard index](http://en.wikipedia.org/wiki/Jaccard_index), [Fowlkes-Mallows index](http://en.wikipedia.org/wiki/Fowlkes%E2%80%93Mallows_index), adjusted [Rand index](http://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index), or all. 
+It can take on values of: [rand/jaccard/fm/adj_rand/all]
 
 Each cluster file must contain two columns of integers, the first column representing the sample ID, the second column the cluster ID. The sample IDs need not be sorted, but must contain all sample IDs from 0 to n samples.
 
@@ -51,9 +51,11 @@ $ cluster_eval eval -a clust_a.tab -b clust_b.tab -y jaccard
 0.286
 $ cluster_eval eval -a clust_a.tab -b clust_b.tab -y fm
 0.456
+$ cluster_eval eval -a clust_a.tab -b clust_b.tab -y adj_rand
+0.200
 $ cluster_eval eval -a clust_a.tab -b clust_b.tab -y all
-rand	jaccard	fm
-0.643	0.286	0.456
+rand	jaccard	fm	adj_rand
+0.643	0.286	0.456	0.200
 ```
 
 
