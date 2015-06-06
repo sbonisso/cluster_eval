@@ -2,6 +2,7 @@
 
 Evaluates clusterings of a dataset using a variety of scores.
 
+[![Gem Version](https://badge.fury.io/rb/cluster_eval.svg)](http://badge.fury.io/rb/cluster_eval)
 [![Build Status](https://travis-ci.org/sbonisso/cluster_eval.svg?branch=master)](https://travis-ci.org/sbonisso/cluster_eval)
 
 ## Installation
